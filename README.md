@@ -12,6 +12,8 @@ To assist you in the queries ahead, the schema for the Chinook Database is provi
 
 ## Project Description
 You need to come up with 4 questions that you can answer with SQL. The questions must be complex enough to where the SQL used to answer it requires at least one JOIN and one Aggregation.
+
+In this we will use our local environment <b>SQLite</b>
 <br>
 <br>
 
