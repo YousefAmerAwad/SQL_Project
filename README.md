@@ -1,4 +1,3 @@
 # SQL_Project
-In this project, you will query the Chinook Database.
-The Chinook Database holds information about a music store.
+In this project, you will query the Chinook Database. The Chinook Database holds information about a music store.<br>
 For this project, you will be assisting the Chinook team with understanding the media in their store, their customers and employees, and their invoice information.
