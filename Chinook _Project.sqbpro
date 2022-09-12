@@ -1,47 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Yousef Amer/Desktop/my_SQL/database/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="5283"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,5:mainAlbum"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Album" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="84"/><column index="2" value="300"/><column index="3" value="76"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">/*
-We decieded to hold a concert.
-but before we do, we must know Which music genre should we choose, Where to hold our concert and Which band should perform
-*/
-
-/*First SQL: Which music genre should we choose*/
-
-/*
-Questions answered with this SQL are the following:
-
-Q1: Which music genre is most popular among our customers?
-Q2: How many customers out of all our 59 customers listen to this genre with percentage?
-*/
-
-SELECT t1.Name, COUNT(*) AS &quot;Number of listeners&quot;, COUNT(*)*100/59 AS &quot;Percentage %&quot;
-FROM(
-	SELECT Customer.CustomerId, Genre.Name, COUNT(*)
-	FROM Customer
-	JOIN Invoice
-	ON Invoice.CustomerId = Customer.CustomerId
-	JOIN InvoiceLine
-	ON InvoiceLine.InvoiceId = Invoice.InvoiceId
-	JOIN Track
-	ON Track.TrackId = InvoiceLine.TrackId
-	JOIN Genre
-	ON Genre.GenreId = Track.GenreId
-
-	GROUP BY  Customer.CustomerId, Genre.Name
-	ORDER BY Customer.CustomerId) as t1
-GROUP BY 1
-ORDER BY 2 
-
-/*
-Based on this table we found out that 100% of our customers listen to Rock music, so we decided to told a Rock concert
-*/</sql><sql name="SQL 3">/*
-Based on the last question (Q1), we decided to hold a rock concert, but which country should we choose to hold our concert in?
-Questions answered with this SQL are the following:
-Q1: Top 10 countries that consume rock music so we can hold a rock concert there?
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Yousef Amer/Desktop/my_SQL/database/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="5283"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,5:mainAlbum"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Album" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="84"/><column index="2" value="300"/><column index="3" value="76"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">/*
+We decieded to hold a concert.
+but before we do, we must know Which music genre should we choose, Where to hold our concert and Which band should perform
 */
 
+/*First SQL: Which music genre should we choose*/
 
-SELECT t1.Country, t1.Purchases
+/*
+Questions answered with this SQL are the following:
+
+Q1: Which music genre is most popular among our customers?
+Q2: How many customers out of all our 59 customers listen to this genre with percentage?
+*/
+
+SELECT t1.Name, COUNT(*) AS &quot;Number of listeners&quot;, COUNT(*)*100/59 AS &quot;Percentage %&quot;
 FROM(
-	SELECT Customer.Country, Genre.Name Genre, count(Genre.Name) Purchases
+	SELECT Customer.CustomerId, Genre.Name, COUNT(*)
 	FROM Customer
 	JOIN Invoice
 	ON Invoice.CustomerId = Customer.CustomerId
@@ -51,9 +24,37 @@ FROM(
 	ON Track.TrackId = InvoiceLine.TrackId
 	JOIN Genre
 	ON Genre.GenreId = Track.GenreId
-	GROUP BY Customer.Country, Genre.Name
-	ORDER BY Purchases desc) as t1
-WHERE t1.Genre = 'Rock'
-GROUP BY t1.Country
-ORDER BY t1.Purchases desc
-LIMIT 10</sql><current_tab id="0"/></tab_sql></sqlb_project>
+
+	GROUP BY  Customer.CustomerId, Genre.Name
+	ORDER BY Customer.CustomerId) as t1
+GROUP BY 1
+ORDER BY 2 DESC
+
+/*
+Based on this table we found out that 100% of our customers listen to Rock music, so we decided to told a Rock concert
+*/</sql><sql name="SQL 3">/*
+Based on the last question (Q1), we decided to hold a rock concert, but In which country should we hold our concert?
+Questions answered with this SQL are the following:
+Q1: Top countries that consume rock music so we can hold a rock concert there?
+*/
+
+
+
+SELECT Customer.Country, SUM(InvoiceLine.UnitPrice) AS &quot;Total Spend&quot;
+FROM Customer
+JOIN Invoice
+ON Invoice.CustomerId = Customer.CustomerId
+JOIN InvoiceLine
+ON InvoiceLine.InvoiceId = Invoice.InvoiceId
+JOIN Track
+ON Track.TrackId = InvoiceLine.TrackId
+JOIN Genre
+ON Genre.GenreId = Track.GenreId
+WHERE Genre.Name = &quot;Rock&quot;
+GROUP BY Customer.Country
+ORDER BY 2 DESC
+
+
+/*
+Based on this table, we found out that customers from USA spend the most on rock music, so we decided to hold a rock concert there
+*/</sql><current_tab id="1"/></tab_sql></sqlb_project>
