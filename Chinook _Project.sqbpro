@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Yousef Amer/Desktop/my_SQL/database/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="5283"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,5:mainAlbum"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Album" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="84"/><column index="2" value="300"/><column index="3" value="76"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">/*
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Yousef Amer/Desktop/my_SQL/database/chinook.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="5283"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,5:mainAlbum"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Album" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="84"/><column index="2" value="300"/><column index="3" value="76"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1.sql">/*
 We decieded to hold a concert.
 but before we do, we must know Which music genre should we choose, Where to hold our concert and Which band should perform
 */
@@ -32,7 +32,7 @@ ORDER BY 2 DESC
 
 /*
 Based on this table we found out that 100% of our customers listen to Rock music, so we decided to told a Rock concert
-*/</sql><sql name="SQL 2">/*
+*/</sql><sql name="SQL_2.sql">/*
 Based on the last question (Q1), we decided to hold a rock concert, but In which country should we hold our concert?
 Questions answered with this SQL are the following:
 Q1: Top countries that consume rock music so we can hold a rock concert there?
@@ -57,7 +57,7 @@ ORDER BY 2 DESC
 
 /*
 Based on this table, we found out that customers from USA spend the most on rock music, so we decided to hold a rock concert there
-*/</sql><sql name="SQL 3">/*
+*/</sql><sql name="SQL3.sql">/*
 From the prvious two tabels we decieded to hold our rock concert in USA. but we haven't set a date for the concert yet
 In this SQL we will determine the month when we should hold our rock concert 
 We want to choose the month with the lowest profit based on previous years (to increase the profit in that month).
@@ -84,7 +84,7 @@ ORDER BY 1
 /*
 Based on this table, we find out that March is the lowest gross profit month, so we will hold our profitable concert in March to increase the profit
 */
-</sql><sql name="SQL 4">/*
+</sql><sql name="SQL4.sql">/*
 Finally, we would like to choose a rock band that will perform at our rock concert.
 Of course, we'll pick the band with the highest grossing last year.
 */
